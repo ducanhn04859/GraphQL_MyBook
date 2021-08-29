@@ -1,17 +1,11 @@
+const { books, authors } = require('../data/static');
+
 const resolvers = {
     Query: {
-        books: () => [
-            {
-                id: 1,
-                name: "User First",
-                genre:"IT book"
-            },
-             {
-                id: 2,
-                name: "Dev UP",
-                genre:"IT book"
-            }
-        ]
+        books: () => books,
+        book: (parent,args) =>books.find(book => book.id.toString() === args.id),
+        authors: () => authors,
+        author: (parent, args) => authors.find(author =>author.id.toString() === args.id )
     }
 }
 

@@ -4,7 +4,7 @@
   "description": "server graphql",
   "main": "app.js",
   "scripts": {
-    "serve": "nodemon app",
+    "server": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
