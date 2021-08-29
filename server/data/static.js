@@ -3,37 +3,37 @@ const books = [
     id: 1,
     name: "User First",
     genre: "IT book",
-    authorID: 2,
+    authorId: 2,
   },
   {
     id: 2,
     name: "Dev UP",
     genre: "IT book",
-    authorID: 1,
+    authorId: 1,
   },
   {
     id: 3,
     name: "Code Dao Ky Su",
     genre: "IT book",
-    authorID: 1,
+    authorId: 1,
   },
   {
     id: 4,
     name: "Business Analysis",
     genre: "IT book",
-    authorID: 3,
+    authorId: 3,
   },
   {
     id: 4,
     name: "Tri Thong Minh Cam Xuc",
     genre: "Soft Skill book",
-    authorID: 3,
+    authorId: 3,
   },
   {
     id: 5,
     name: "Manage Time",
     genre: "Soft Skill book",
-    authorID: 3,
+    authorId: 3,
   },
 ]
 
