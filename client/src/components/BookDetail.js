@@ -8,15 +8,13 @@ const BookDetail = () => {
       <Card.Body>
         <Card.Title> Dev Up</Card.Title>
         <Card.Subtitle> IT Book</Card.Subtitle>
-        <Card.Text>
-          <p>Name author: Nguyen Hien</p>
-          <p>Age: 40</p>
-          <p>All books by this author</p>
-          <ul>
-            <li>Dev Up</li>
-            <li>Manage Time</li>
-          </ul>
-        </Card.Text>
+        <p>Name author: Nguyen Hien</p>
+        <p>Age: 40</p>
+        <p>All books by this author</p>
+        <ul>
+          <li>Dev Up</li>
+          <li>Manage Time</li>
+        </ul>
       </Card.Body>
     </Card>
   )

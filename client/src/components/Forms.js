@@ -28,7 +28,25 @@ function Forms() {
           </Button>
         </Form>
       </Col>
-      <Col></Col>
+      <Col>
+        <Form>
+          <Form.Group className="invisible">
+            <Form.Control />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Control type="text" placeholder="Author name" required />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Control type="number" placeholder="Author Age" />
+          </Form.Group>
+
+          <Button className="float-right" variant="info" type="submit">
+            Add New Book
+          </Button>
+        </Form>
+      </Col>
     </Row>
   )
 }

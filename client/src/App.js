@@ -1,6 +1,5 @@
 /** @format */
 
-import "bootstrap/dist/css/bootstrap.min.css"
 import Container from "react-bootstrap/Container"
 import BookList from "./components/BookList"
 import Form from "./components/Forms"
