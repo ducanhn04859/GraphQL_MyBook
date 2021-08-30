@@ -6,34 +6,28 @@ import CardColumns from "react-bootstrap/CardColumns"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import BookDetail from "./BookDetail"
+
+import { useQuery } from "@apollo/client"
+import { getBooks } from "../graphql-client/queries"
+
 const BookList = () => {
+  const { loading, error, data } = useQuery(getBooks)
+  if (loading) return <p>Loading book ...</p>
+  if (error) return <p>Something error ... </p>
+  console.log(data)
   return (
     <Row>
       <Col xs={8}>
         <CardColumns>
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
-
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
-
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
-
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
-
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
-
-          <Card border="info" text="info" className="text-center shadow">
-            <Card.Body>Dev Up</Card.Body>
-          </Card>
+          {data.books.map((book) => (
+            <Card
+              border="info"
+              text="info"
+              className="text-center shadow"
+              key={book.id}>
+              <Card.Body>{book.name}</Card.Body>
+            </Card>
+          ))}
         </CardColumns>
       </Col>
       <Col>
