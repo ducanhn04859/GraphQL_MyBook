@@ -1,46 +1,56 @@
 /** @format */
 
-import React from "react"
+import React, { useState } from "react"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 
-import { useQuery } from "@apollo/client"
-import { getAuthors } from "../graphql-client/queries"
+import { useQuery, useMutation } from "@apollo/client"
+import { getAuthors, getBooks } from "../graphql-client/queries"
+import { addSingleBook } from "../graphql-client/mutations"
 
 function Forms() {
+  const [newBook, setNewBook] = useState({
+    name: "",
+    genre: "",
+    authorId: "",
+  })
+
+  const { name, genre, authorId } = newBook
+
+  const onInputChange = (event) => {
+    setNewBook({
+      ...newBook,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const onSubmitForm = (event) => {
+    event.preventDefault()
+    //console.log(newBook)
+    addBook({
+      variables: {
+        name,
+        genre,
+        authorId,
+      },
+      refetchQueries: [{ query: getBooks }],
+    })
+    setNewBook({ name: "", genre: "", authorId: "" })
+  }
+
+  //GraphQL operations
   const { loading, error, data } = useQuery(getAuthors)
+
+  const [addBook, dataMutaion] = useMutation(addSingleBook)
+
+  // console.log(dataMutaion)
+
   return (
     <Row>
       <Col>
-        <Form>
-          <Form.Group>
-            <Form.Control type="text" placeholder="Book name" required />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Control type="text" placeholder="Book Genre" />
-          </Form.Group>
-
-          <Form.Group>
-            {loading ? (
-              <p>Loading author ...</p>
-            ) : (
-              <Form.Control as="select" defaultValue="Select author">
-                <option disabled>Select author</option>
-                {data.authors.map((author) => (
-                  <option key={author.id} value={author.id}>
-                    {author.name}
-                  </option>
-                ))}
-              </Form.Control>
-            )}
-          </Form.Group>
-          <Button className="float-right" variant="info" type="submit">
-            Add New Book
-          </Button>
-        </Form>
+        <BookForm />
       </Col>
       <Col>
         <Form>
